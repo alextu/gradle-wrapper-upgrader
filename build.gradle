@@ -1,0 +1,18 @@
+plugins {
+    id 'base'
+}
+
+tasks.register('gitClone', GitClone) {
+    gitUrl = project.property('gitUrl')
+}
+
+tasks.register('upgradeWrapper', UpgradeWrapper) {
+    gradleProject = tasks.named('gitClone').get().outputDir
+    gradleVersion = project.property('gradleVersion')
+}
+
+tasks.register('gitPush', GitPush) {
+    gitDir = tasks.named('gitClone').get().outputDir
+    changes = layout.files(gitDir.dir('gradle/wrapper'), gitDir.file('gradlew'), gitDir.file('gradlew.bat'))
+    message = "Upgrade Gradle wrapper to ${project.property('gradleVersion')}"
+}
