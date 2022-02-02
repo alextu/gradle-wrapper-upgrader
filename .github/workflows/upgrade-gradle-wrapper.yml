@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-          git-repo: ['https://github.com/alextu/gradle-playground.git']
+          git-repo: ['https://github.com/alextu/gradle-playground.git','https://github.com/alextu/gradle-playground2.git']
     steps:
       - name: Checkout gradle-wrapper-upgrader
         uses: actions/checkout@v2
