@@ -20,6 +20,13 @@ jobs:
         # with:
         #  repository: alextu/gradle-wrapper-upgrader
         #  ref: main
+      # - name: Import GPG key
+      #   uses: crazy-max/ghaction-import-gpg@v4
+      #   with:
+      #     gpg_private_key: ${{ secrets.SOME_PGP_PRIVATE_KEY }}
+      #     passphrase: ${{ secrets.SOME_PGP_PASSPHRASE }}
+      #     git_user_signingkey: true
+      #     git_commit_gpgsign: true
       - name: Setup git config
         env:
           TOKEN: ${{ secrets.CCUD_GIT_TOKEN }}
